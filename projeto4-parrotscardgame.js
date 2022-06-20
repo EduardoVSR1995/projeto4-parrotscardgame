@@ -47,7 +47,7 @@ function choice() {
         cardsImg.splice(0, cardsImg.length);
         endgame.push(1);
         if (endgame.length === realOfCards / 2) {
-            victory();
+            setTimeout(victory, 1000);
         }
         console.log(cardsImg, sum);
     }
@@ -84,6 +84,7 @@ function remov() {
 }
 
 function victory() {
+
     alert(`Você ganhou em ${totalplay} jogadas! e com ${conter} segundos.`);
     let reinitialize = prompt("Gostaria de reiniciar a partida (sim) ou (não)");
     if (reinitialize === "sim") {
