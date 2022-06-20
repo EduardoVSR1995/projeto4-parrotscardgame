@@ -1,6 +1,5 @@
 let totalplay = 0;
 let sum = 0;
-let sum2 = 0;
 let endgame = [];
 let cardsImg = [];
 let cardsRemove = [];
@@ -37,28 +36,28 @@ function addCards() {
 }
 
 function choice() {
+    if(cardSelect.length < 2){
     this.classList.add('flip');
     cardSelect.push(this);
     cardsImg.push(this.querySelector('.backGif').innerHTML);
-    sum2++;
     totalplay++;
-    if (sum2 == 2 && cardSelect[0] != cardSelect[1] && cardsImg[0] == cardsImg[1]) {
+    if (cardSelect.length == 2 && cardSelect[0] != cardSelect[1] && cardsImg[0] == cardsImg[1]) {
         cardsRemove.push(cardSelect[0], cardSelect[1]);
         cardSelect.splice(0, cardSelect.length);
         cardsImg.splice(0, cardsImg.length);
-        sum2 = 0;
         endgame.push(1);
         if (endgame.length === realOfCards / 2) {
             victory();
         }
         console.log(cardsImg, sum);
     }
-    else if (sum2 === 2 && (cardSelect[0] === cardSelect[1] || cardsImg[0] !== cardsImg[1])) {
+    else if (cardSelect.length === 2 && (cardSelect[0] === cardSelect[1] || cardsImg[0] !== cardsImg[1])) {
         if(document.querySelector('.click') != null){
         document.removeEventListener(onclick);
         }
         setTimeout(remov, 1000);
     }
+}
 }
 
 function sort() {
@@ -82,13 +81,11 @@ function remov() {
     cardSelect[1].classList.remove('flip');
     cardSelect.splice(0, cardSelect.length);
     cardsImg.splice(0, cardsImg.length);
-    sum2 = 0;
 }
 
 function victory() {
     alert(`Você ganhou em ${totalplay} jogadas! e com ${conter} segundos.`);
     let reinitialize = prompt("Gostaria de reiniciar a partida (sim) ou (nao)");
-    
     if (reinitialize === "sim") {
         totalplay = 0;
         sum = 0;
