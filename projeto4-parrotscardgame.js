@@ -30,7 +30,7 @@ function addCards() {
         nellCards.innerHTML = `<div class='faceGif face'><img src='front.png'> </div><div class='backGif face'><img src='${passNumber()}.gif'</div>`;
         document.querySelector(".allCards").appendChild(nellCards);
     }
-    let widthAll = (117 * (realOfCards /2) / realOfCards+21 );
+    let widthAll = (117 * (realOfCards /2) / realOfCards+2 );
     document.querySelector(".allCards").style.cssText = `width : ${widthAll}%;`;
 
 }
