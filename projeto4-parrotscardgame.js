@@ -30,7 +30,7 @@ function addCards() {
         nellCards.innerHTML = `<div class='faceGif face'><img src='front.png'> </div><div class='backGif face'><img src='${passNumber()}.gif'</div>`;
         document.querySelector(".allCards").appendChild(nellCards);
     }
-    let widthAll = (117 * (realOfCards / 2) / realOfCards -1);
+    let widthAll = (117 * (realOfCards /2) / realOfCards+21 );
     document.querySelector(".allCards").style.cssText = `width : ${widthAll}%;`;
 
 }
@@ -85,7 +85,7 @@ function remov() {
 
 function victory() {
     alert(`Você ganhou em ${totalplay} jogadas! e com ${conter} segundos.`);
-    let reinitialize = prompt("Gostaria de reiniciar a partida (sim) ou (nao)");
+    let reinitialize = prompt("Gostaria de reiniciar a partida (sim) ou (não)");
     if (reinitialize === "sim") {
         totalplay = 0;
         sum = 0;
