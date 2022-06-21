@@ -41,11 +41,26 @@ function choice() {
     cardSelect.push(this);
     cardsImg.push(this.querySelector('.backGif').innerHTML);
     totalplay++;
+
+    if(cardsImg[0] === endgame[0] || cardsImg[0] === endgame[1]){
+     console.log('111');
+     cardSelect.splice(0, cardSelect.length);
+     cardsImg.splice(0, cardsImg.length);
+     totalplay=0;   
+     return;
+    }
+
+    if(cardSelect[0] === cardSelect[1] && cardSelect.length == 2 ){
+        remov();
+        totalplay=0;
+        return;
+    }
+    
     if (cardSelect.length == 2 && cardSelect[0] != cardSelect[1] && cardsImg[0] == cardsImg[1]) {
         cardsRemove.push(cardSelect[0], cardSelect[1]);
+        endgame.push(this.querySelector('.backGif').innerHTML);
         cardSelect.splice(0, cardSelect.length);
         cardsImg.splice(0, cardsImg.length);
-        endgame.push(1);
         if (endgame.length === realOfCards / 2) {
             setTimeout(victory, 1000);
         }
@@ -55,6 +70,8 @@ function choice() {
         if(document.querySelector('.click') != null){
         document.removeEventListener(onclick);
         }
+    
+    
         setTimeout(remov, 1000);
     }
 }
